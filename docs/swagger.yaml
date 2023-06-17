@@ -1,0 +1,63 @@
+info:
+  contact: {}
+  description: API para listar e calcular quantidades de carne para um churrasco fácil.
+  title: Churrasco Fácil API
+paths:
+  /calcular:
+    get:
+      description: Calcula a quantidade de carne necessária para um churrasco
+      parameters:
+      - description: Quantidade de pessoas
+        in: query
+        name: pessoas
+        required: true
+        type: integer
+      - description: Cortes de carne selecionados (separados por vírgula)
+        in: query
+        name: cortes
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: number
+            type: object
+      summary: Calcular quantidade de carne
+  /carnes:
+    get:
+      description: Retorna uma lista de tipos de carne disponíveis
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
+      summary: Listar tipos de carne
+  /cortes:
+    get:
+      description: Retorna uma lista de cortes de churrasco para um determinado tipo
+        de carne
+      parameters:
+      - description: Tipo de carne (Frango, Boi, Porco, Carneiro)
+        in: query
+        name: tipo
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
+      summary: Listar cortes de churrasco
+swagger: "2.0"
