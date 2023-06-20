@@ -8,6 +8,8 @@ import (
 	"os"
 
 	docs "github.com/LC-Duarte/churrascofacil/docs" // Importa os arquivos de documentação gerados pelo Swagger
+
+	"github.com/LC-Duarte/churrascofacil/internal/model"
 	swagger "github.com/arsmn/fiber-swagger/v2"
 	fiber "github.com/gofiber/fiber/v2"
 )
@@ -40,6 +42,10 @@ func main() {
 	docs.SwaggerInfo.BasePath = "/"
 	app := fiber.New()
 	config = loadConfig("load.json")
+	var cortes model.Cortes
+	cortes.Load("load.json")
+	fmt.Println(cortes)
+	return
 	//app.Get("/", home)
 	// Rota para a documentação Swagger
 	app.Get("/swagger/*", swagger.HandlerDefault) // default
@@ -67,12 +73,15 @@ func main() {
 	// Rota para calcular a quantidade de carne
 	//app.Get("/calcular", calcularQuantidade)
 
-	err := app.Listen(":8080")
-	if err != nil {
-		fmt.Println("The port is already in use!")
-		os.Exit(1)
-	}
+	fmt.Println(config["cortes"])
+	/*
+	   err := app.Listen(":8080")
 
+	   	if err != nil {
+	   		fmt.Println("The port is already in use!")
+	   		os.Exit(1)
+	   	}
+	*/
 }
 
 // @Summary Listar tipos de carne
@@ -132,16 +141,16 @@ func calcularQuantidade(c *fiber.Ctx) error {
 	quantidades := make([]string, 1)
 	switch pessoas := c.QueryInt("pessoas", -1); {
 	case pessoas == 1:
-		quantidades = [""]
+		//quantidades = ["Hi"]
 		break
 	case pessoas > 1:
-		quantidades = [""]
+		//quantidades = []string
 		break
 	case pessoas > 5:
-		quantidades = [""]
+		//quantidades = []string
 		break
 	case pessoas > 10:
-		quantidades = [""]
+		//quantidades = []string
 		break
 	default:
 		break
