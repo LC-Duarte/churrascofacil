@@ -12,11 +12,6 @@ paths:
         name: pessoas
         required: true
         type: integer
-      - description: Cortes de carne selecionados (separados por vírgula)
-        in: query
-        name: cortes
-        required: true
-        type: string
       produces:
       - application/json
       responses:

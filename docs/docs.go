@@ -30,13 +30,6 @@ const docTemplate = `{
                         "name": "pessoas",
                         "in": "query",
                         "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "Cortes de carne selecionados (separados por vírgula)",
-                        "name": "cortes",
-                        "in": "query",
-                        "required": true
                     }
                 ],
                 "responses": {

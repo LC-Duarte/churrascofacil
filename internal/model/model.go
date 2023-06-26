@@ -28,3 +28,28 @@ func (cortes *Cortes) Load(path string) error {
 	return err
 
 }
+
+func (corte *Corte) IsMain() bool {
+	for _, s := range corte.Cat {
+		if "M" == s {
+			return true
+		}
+	}
+	return false
+}
+func (corte *Corte) IsAppetizer() bool {
+	for _, s := range corte.Cat {
+		if "A" == s {
+			return true
+		}
+	}
+	return false
+}
+func (corte *Corte) IsSec() bool {
+	for _, s := range corte.Cat {
+		if "S" == s {
+			return true
+		}
+	}
+	return false
+}
